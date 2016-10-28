@@ -312,7 +312,7 @@ inline void enforceSignConvention(const Eigen::Matrix<T, 2, 2>& F,
    \param[out] V Robustly a rotation matrix.
 */
 template <class T>
-inline int singularValueDecomposition(
+inline void My_SVD(
 	const Eigen::Matrix<T, 2, 2>& F,
     Eigen::Matrix<T, 2, 2>& U,
     Eigen::Matrix<T, 2, 1>& Sigma,
@@ -363,12 +363,10 @@ inline int singularValueDecomposition(
 	enforceSignConvention(F, U, V, sigma1, sigma2, det_U_negative, det_V_negative);
 	Sigma(0,0) = sigma1;
 	Sigma(1,0) = sigma2;
-	//Sigma << sigma1, sigma2;
-	return 0;
 }
 
 template <class T>
-inline int polarDecomposition(
+inline void My_Polar(
 	const Eigen::Matrix<T, 3, 3>& F,
     Eigen::Matrix<T, 3, 3>& R,
     Eigen::Matrix<T, 3, 3>& S,
@@ -399,7 +397,6 @@ inline int polarDecomposition(
 		}
 		++it;
 	}
-	return it;
 }
 }
 #endif
